@@ -1,5 +1,14 @@
 let R = require('ramda');
 
+let get = (x, ...ops) => ops.reduce(
+  (acc, op) =>
+    acc === null || acc === undefined ? acc
+      : typeof op === 'string' || typeof op === 'number' ? acc[op]
+        : op(acc),
+  x);
+
+let sum = (arr) => arr.reduce(R.add, 0);
+
 let toAnnotations = result => {
   let annos = [];
 
