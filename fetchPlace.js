@@ -1,12 +1,10 @@
+require('dotenv').config()
 let request = require('request-promise-native')
 
 let fetchPlace = async ocr => {
   try {
     let query = toQuery(ocr),
-        placesData = JSON.parse(await (request.get({
-          uri: "https://maps.googleapis.com/maps/api/place/textsearch/json",
-          qs: { query, key: process.env.GOOGLE_PLACES_API_KEY }
-        })))
+        placesData = await fetchRawPlace(query)
     
     return store = formatPlace(placesData)
   } catch (e) {
@@ -30,7 +28,13 @@ let toQuery = ocr => {
   return firstNontrivialBlock ? clean(firstNontrivialBlock) : null
 }
 
-let clean = str => str.replace(/\n/g, " ")
+let clean = str =>
+  str.replace(/\n/g, " ")
+     .replace(/\b(\d[\d ]*) +(\d+)/g, (_, __, last) => last) // This tends to remove extraneous numbers and leave behind street address numbers, which improves results
+     .replace(rxPunctuation, " ")
+     .replace(rxLeadingTrailingSpaces, "")
+     .replace(rxMultipleSpaces, " ")
+     .replace(rxBlankLine, "")
 
 let removeJunk = str =>
   str.replace(rxWelcome, "")
@@ -39,9 +43,6 @@ let removeJunk = str =>
      .replace(rxTime, "")
      .replace(rxDate, "")
      .replace(rxPhone, "")
-     .replace(rxPunctuation, " ")
-     .replace(rxLeadingTrailingSpaces, "")
-     .replace(rxMultipleSpaces, " ")
      .replace(rxBlankLine, "")
 
 let rxWelcome = /\bwelcome(\s+to)?(\s+our\s+store)?\b/gi
@@ -63,6 +64,11 @@ let locationByStateAndZip = str => {
 
 let atLeastTwoNonemptyLines = str => str.match(/\S.*\n.*\S/)
 let atLeastOneDigit = str => str.match(/\d/)
+
+let fetchRawPlace = async query => JSON.parse(await (request.get({
+  uri: "https://maps.googleapis.com/maps/api/place/textsearch/json",
+  qs: { query, key: process.env.GOOGLE_PLACES_API_KEY }
+})))
 
 let formatPlace = placesData => {
   try {
