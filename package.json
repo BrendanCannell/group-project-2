@@ -1,13 +1,10 @@
 {
   "name": "group-project-2",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
-  "main": "server.js",
+  "description": "Group Project 2",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "lint": "eslint **/*.js --quiet",
-    "fix": "eslint --fix .",
-    "test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit"
+    "start": "node app.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -21,14 +18,5 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "sequelize": "^4.42.0"
-  },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "mocha": "^5.2.0",
-    "prettier": "^1.13.7"
   }
 }
