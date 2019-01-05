@@ -34,7 +34,6 @@ let clean = str =>
      .replace(rxPunctuation, " ")
      .replace(rxLeadingTrailingSpaces, "")
      .replace(rxMultipleSpaces, " ")
-     .replace(rxBlankLine, "")
 
 let removeJunk = str =>
   str.replace(rxWelcome, "")
