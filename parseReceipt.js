@@ -7,11 +7,11 @@ let decimalParser = (type, rx) => str => {
 }
 
 let parsers = [
-  decimalParser('perGallon', /\$ *(\d+)[\.\, ](\d\d\d)/),
+  decimalParser('perGallon', /\$ *(\d+)[\.\, ](\d\d\d)\b/),
   decimalParser('perGallon', /(\d+)[\.\, ](\d\d\d) *\/ *G/),
   decimalParser('price', /\$ *(\d+)[\.\, ](\d\d)\b/),
-  decimalParser('gallons', /(\d+)[\.\, ](\d\d\d)[G06]/),
-  decimalParser('gallons', /(?:^|[\w:]) *(\d+)[\.\, ](\d\d\d)/m),
+  decimalParser('gallons', /(\d+)[\.\, ](\d\d\d)[G06]\b/),
+  decimalParser('gallons', /(?:^ *|[A-Z:] *|\d +)(\d+)[\.\,](\d\d\d)\b/m),
   str => {
     let m = str.match(/(0?\d|1[0-2])\/(0?\d|[1-2]\d|3[0-1])\/((?:19|20)?\d\d)/)
 

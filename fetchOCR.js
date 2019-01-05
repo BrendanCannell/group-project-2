@@ -6,13 +6,15 @@ let { get, avg, deepRemoveNullProps, isSingleton } = require("./util")
 
 module.exports = async input => {
   try {
-    let rawOCR = await client.documentTextDetection(input)
+    let rawOCR = await fetchRaw(input)
 
     return fromRaw(rawOCR)
   } catch (e) {
     return null
   }
 }
+
+let fetchRaw = input => client.documentTextDetection(input)
 
 let fromRaw = googleVisionOCRData => {
   let denullified = deepRemoveNullProps(googleVisionOCRData),
@@ -212,5 +214,3 @@ Object.defineProperties(
       configurable: true
     }),
     verticesDerivedData))
-
-module.exports.fromRaw = fromRaw
