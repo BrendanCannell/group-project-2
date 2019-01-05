@@ -31,9 +31,9 @@ module.exports = function(app) {
     }
 
     app.post('/api/image', (req, res) => {
-      upload(req, res, async (err) => {
+      upload(req, res, async (error) => {
         if(error){
-          console.log(err);
+          console.log(error);
           res.json({ error })
         } 
         else {
