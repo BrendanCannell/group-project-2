@@ -15,9 +15,12 @@
     "dotenv": "^6.2.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "multer": "^1.4.1",
     "mysql2": "^1.6.4",
     "ramda": "^0.26.1",
-    "sequelize": "^4.41.2"
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "sequelize": "^4.42.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
