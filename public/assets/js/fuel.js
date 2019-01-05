@@ -34,7 +34,6 @@ $(function() {
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
           var data = JSON.parse(xhr.responseText);
-          console.log(data)
 
           var fields = [['place'],
                         ['address'],
@@ -44,7 +43,6 @@ $(function() {
 
           fields.forEach(([key, id = key]) => {
             var value = data[key];
-            console.log(key, id, value);
             var el = $('#' + id);
 
             el.css("visibility", "visible");
