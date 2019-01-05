@@ -1,57 +1,61 @@
 $(function() {
 
-        var editId;
-    
-        $(".file-field :input").change(function(e) {
+    var editId;
+    var file;
 
-    for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+    $(".file-field :input").change(function(e) {
 
-        var file = e.originalEvent.srcElement.files[i];
-        console.log(file);
+        for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
 
-        var img = document.createElement("img");
-        var reader = new FileReader();
-        reader.onloadend = function() {
-             img.src = reader.result;
-             
-        }
-        reader.readAsDataURL(file);
+            file = e.originalEvent.srcElement.files[i];
+            console.log(file);
 
-        $("#picField").append(img);
+            var img = document.createElement("img");
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                img.src = reader.result;
+                
+            }
+            reader.readAsDataURL(file);
 
-        $("#subButton").css("visibility", "visible");
-        $("input").css("visibility", "hidden");
+            $("#picField").append(img);
 
-          const xhr = new XMLHttpRequest();
-          const fd = new FormData();
-          
-          xhr.open("POST", "/api/image", true);
-          xhr.onreadystatechange = function() {
-              if (xhr.readyState == 4 && xhr.status == 200) {
-                  var data = JSON.parse(xhr.responseText);
-                  console.log(data)
+            $("#subButton").css("visibility", "visible");
+            $("input").css("visibility", "hidden");
 
-                  var fields = [['place'],
-                                ['address'],
-                                ['gallons'],
-                                ['price', 'total'],
-                                ['perGallon']];
-
-                  fields.forEach(([key, id = key]) => {
-                    var value = data[key];
-                    console.log(key, id, value);
-                    var el = $('#' + id);
-                    
-                    el.css("visibility", "visible");
-                    if (value) el.val(value);
-                  })
-              }
-          };
-          fd.append('myImage', file);
-          // Initiate a multipart/form-data upload
-          xhr.send(fd);
         }
     });
+
+    $("#receiptPic").on('submit', function(event) {
+      const xhr = new XMLHttpRequest();
+      const fd = new FormData();
+      
+      xhr.open("POST", "/api/image", true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var data = JSON.parse(xhr.responseText);
+          console.log(data)
+
+          var fields = [['place'],
+                        ['address'],
+                        ['gallons'],
+                        ['price', 'total'],
+                        ['perGallon']];
+
+          fields.forEach(([key, id = key]) => {
+            var value = data[key];
+            console.log(key, id, value);
+            var el = $('#' + id);
+
+            el.css("visibility", "visible");
+            if (value) el.val(value);
+          })
+        }
+      };
+      fd.append('myImage', file);
+      // Initiate a multipart/form-data upload
+      xhr.send(fd);
+    })
 
     $("#add-btn").on('click', function(event) {
         event.preventDefault();
