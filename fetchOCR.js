@@ -1,7 +1,7 @@
-require('dotenv').config();
+require('dotenv').config()
 let R = require('ramda')
-let vision = require('@google-cloud/vision');
-let client = new vision.ImageAnnotatorClient();
+let vision = require('@google-cloud/vision')
+let client = new vision.ImageAnnotatorClient()
 let { get, avg, deepRemoveNullProps, isSingleton } = require("./util")
 
 module.exports = async input => {
@@ -168,7 +168,7 @@ let breakWhen = predicate => {
     )
   }
 
-  return go;
+  return go
 }
 
 let blockify = breakWhen((l1, l2) => {

@@ -44,9 +44,9 @@ let removeJunk = str =>
      .replace(rxMultipleSpaces, " ")
      .replace(rxBlankLine, "")
 
-let rxWelcome = /\bwelcome(\s+to)?(\s+our\s+store)?\b/gi;
-let rxSixOrMoreDigits = /\b[A-Z\d-]*?\d{6}[A-Z\d-]*\b/g;
-let rxAdjacentLettersAndDigits = /\b[A-Z\d-]*?([A-Z]+\d+|\d+[A-Z]+)[A-Z\d-]*/g;
+let rxWelcome = /\bwelcome(\s+to)?(\s+our\s+store)?\b/gi
+let rxSixOrMoreDigits = /\b[A-Z\d-]*?\d{6}[A-Z\d-]*\b/g
+let rxAdjacentLettersAndDigits = /\b[A-Z\d-]*?([A-Z]+\d+|\d+[A-Z]+)[A-Z\d-]*/g
 let rxTime = /([1-9]|[0-1][0-9]|2[0-3]):([0-5]\d)(?::([0-5]\d))? *(am|pm)?/gi
 let rxDate = /(0?\d|1[0-2])\/(0?\d|[1-2]\d|3[0-1])\/((?:19|20)?\d\d)/g
 let rxPhone = /\(?\d\d\d\)?\W\d\d\d\W\d\d\d\d/g
@@ -56,7 +56,7 @@ let rxMultipleSpaces = /  +/g
 let rxLeadingTrailingSpaces = /(^ +)|( +$)/gm
 
 let locationByStateAndZip = str => {
-  let match = str.match(/^(?:.*\n){0,2}.*?\W *[A-Z]{2}\W*\d{5}\b/im);
+  let match = str.match(/^(?:.*\n){0,2}.*?\W *[A-Z]{2}\W*\d{5}\b/im)
 
   return match && match[0]
 }
