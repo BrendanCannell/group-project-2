@@ -1,0 +1,32 @@
+Pilot #903
+1944 N. 9th Street
+Salina, KS 67401
+785-825-6787
+
+Invoice #      95948
+Date        10/09/18
+Time           20:32
+Auth #        091706
+
+VI
+Acct#
+############6592
+
+Pump  Gallons  Price
+ 04   9.483  $ 2.739
+
+Product       Amount
+Unleaded     $ 25.97
+
+Total Sale   $ 25.97
+
+SALE - Card Swiped
+
+  Thank You For
+  Choosing Pilot
+Please Come Again
+
+
+Thank you
+for shopping
+at Pilot!

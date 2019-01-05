@@ -1,33 +1,117 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+
+ 
+<div class="wrap">
+
+    <div id="header">
+    <h1>Fuel 4 Thought</h1>
+    </div>
+    <div id="mid">
+
+    <div class="container1">
+
+        <div class="card">
+          <div class="card-header">
+            Add Receipt
           </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
           </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+
+        <form id="receiptPic" action="javascript:void(0);" method="POST" enctype="multipart/form-data">
+        
+          <div class="file-field input-field">
+            
+            <input name="myImage" type="file" class="btn  btn-primary btn-md">
+            <div id="picField"> </div>
+            <button type="submit" id="subButton" class="btn  btn-primary btn-md">Submit</button>
+          </div>
+        </form>  
+
+        
+    </div>
+        
+
+        <div class="container2">
+
+          <div class="card">
+              <div class="card-header">
+                Recent Activity
+              </div>
+    
+            {{#each readings}}  
+              <div class="row">
+                <div class="col-md-12 reading-container">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                       <div class="col-6 reading readingPlace">Store: {{this.place}}</div>
+                       <div class="col-6 reading readingPrice">Total: ${{this.price}}</div>
+                       <div class="col-6 reading readingGallons">Gallons: {{this.gallons}}</div>
+                       <div class="col-6 reading readingGallons">Per Gal: ${{this.perGallon}}</div>
+                       <div class="col-12 reading readingDate">{{this.createdAt}}</div>
+                      <div class="col-12">
+                        <button id = "{{this.id}}" class="delete btn btn-xs btn-danger float-left">DELETE</button>
+                        <button data-edit="{{this.id}}" class="edit btn btn-xs btn-info float-right">EDIT</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            
+            {{/each}}
+            </div>
+        </div>
+
+        <div class="container3">
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                Confirm Info
+              </div>
+
+          <div class="card-body">
+            <form action="" method="POST" role="form">
+              <div class="form-group">
+                <label for="">Store</label>
+                <input type="text" class="form-control" id="place" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="">Gallons</label>
+                <input type="number" class="form-control" id="gallons" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="">Total</label>
+                <input type="number" class="form-control" id="total" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="">Per Gallon</label>
+                <input type="number" class="form-control" id="perGallon" placeholder="">
+              </div>
+            </form>
+            <br>
+            <div class=>
+            <button type="submit" class="btn btn-warning btn-md" id="edit-btn">
+                <span class="fa fa-book"></span>Edit Reading</button>
+              <button type="submit" class="btn btn-primary btn-md" id="add-btn">
+                <span class="fa fa-book"></span>Add Reading</button>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
+
+            
+            
+        </div>
+    </div>
+    <div id="footer">
+       <h1>Footer</h1> 
+    </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>

@@ -1,0 +1,27 @@
+#02 EAGLES
+L337884125001
+11620 US HWY 15-501
+CHAPEL HILL , NC
+27517
+12/24/2018 848385546
+12:44:35 PM
+
+XXXX XXXX XXXX 9356
+Visa
+INVOICE 085428
+AUTH 00184C
+
+PUMP# 8
+MID-GRADE     0.095G
+PRICE/GAL     $2.699
+
+FUEL TOTAL   $  0.26
+
+CREDIT       $  0.26
+
+========================================
+Customer-activated Purchase/Capture
+Sequence Number 03601
+Swiped
+APPROVED  00184C
+========================================
